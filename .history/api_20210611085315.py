@@ -4,7 +4,7 @@ import json
 from flask.wrappers import Response
 from flask import jsonify
 from flask import request
-from uuid import uuid4
+
 
 from blockchain import BlockChain
 from flask import Flask
@@ -26,10 +26,8 @@ def mine():
     my_blockchain.add_transaction(
         sender="0",
         recipient=uuid4().replace('-',''),
-        amount = 1
-    )
 
-    
+    )
 
 
 @app.route('/transactions/new', methods = ['POST'])

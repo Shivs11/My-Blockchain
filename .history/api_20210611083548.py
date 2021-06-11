@@ -4,7 +4,7 @@ import json
 from flask.wrappers import Response
 from flask import jsonify
 from flask import request
-from uuid import uuid4
+
 
 from blockchain import BlockChain
 from flask import Flask
@@ -16,20 +16,7 @@ my_blockchain = BlockChain()
 
 @app.route('/mine', methods=['GET'])
 def mine():
-    #We have to now run the proof of algorithm to get the next proof:
-
-    very_last_block = my_blockchain.last_block #Using our getter method defined via @property.
-    very_last_proof = very_last_block['proof']
-    current_proof = my_blockchain.proof_of_work(very_last_proof)
-
-    #Since we have done the mining, we need an award, in the form of bitcoin, for finding the piece of proof:
-    my_blockchain.add_transaction(
-        sender="0",
-        recipient=uuid4().replace('-',''),
-        amount = 1
-    )
-
-    
+    return "This will be mining a new block in our blockchain"
 
 
 @app.route('/transactions/new', methods = ['POST'])
@@ -50,7 +37,7 @@ def new_transactions():
 
     return jsonify(my_response), 201
 
-
+    
         
 
 @app.route('/chain', methods=['GET'])
