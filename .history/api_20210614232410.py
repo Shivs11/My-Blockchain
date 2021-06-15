@@ -11,7 +11,6 @@ from flask import Flask
 
 sys.path.append(".")
 app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 my_blockchain = BlockChain()
 
