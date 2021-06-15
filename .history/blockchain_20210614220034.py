@@ -55,11 +55,11 @@ class BlockChain(object):
         #zeroes. Here, p' is the number in the previous iteration.
 
         my_proof = 0
-        while self.valid_proof(previous_proof, my_proof) is False:
+        while self.valid_proof is False:
             my_proof += 1
         
 
-        return my_proof
+        return proof
 
 
     #Adding a static method to our class:
