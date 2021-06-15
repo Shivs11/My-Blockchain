@@ -43,13 +43,6 @@ class BlockChain(object):
             'previous_hash': previous_hash or self.hash_function(self.chainer[-1])
         }
 
-        self.chainer.append(create_block)
-
-        #Now, we clear the list of the current transactions:
-        self.present_transactions = []
-
-        return create_block
-
     def proof_of_work(self, previous_proof):
         #This function will be developed to find a number p such that a hash value of (pp') contains 4 leading
         #zeroes. Here, p' is the number in the previous iteration.
@@ -65,7 +58,7 @@ class BlockChain(object):
     #Adding a static method to our class:
     @staticmethod
     def hash_function(my_block):
-        # Takes in a block of a blockchain and calculates the SHA-256 hash for that block:
+        # Have to create a SHA256 hash of a block:
 
         pass
 

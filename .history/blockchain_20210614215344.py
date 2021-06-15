@@ -33,22 +33,8 @@ class BlockChain(object):
     
 
     def add_block(self, proof, previous_hash = None):
-        #Creates a new Block in our blockchain:
-
-        create_block = {
-            'index': len(self.chainer) + 1,
-            'timestamp': time(),
-            'transactions': self.present_transactions,
-            'proof': proof,
-            'previous_hash': previous_hash or self.hash_function(self.chainer[-1])
-        }
-
-        self.chainer.append(create_block)
-
-        #Now, we clear the list of the current transactions:
-        self.present_transactions = []
-
-        return create_block
+        #Creates a new block and adds it to our "Blockchain"
+        pass
 
     def proof_of_work(self, previous_proof):
         #This function will be developed to find a number p such that a hash value of (pp') contains 4 leading
@@ -65,7 +51,7 @@ class BlockChain(object):
     #Adding a static method to our class:
     @staticmethod
     def hash_function(my_block):
-        # Takes in a block of a blockchain and calculates the SHA-256 hash for that block:
+        # Have to create a SHA256 hash of a block:
 
         pass
 
