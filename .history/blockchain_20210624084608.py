@@ -4,7 +4,7 @@ import json
 from time import time
 from uuid import uuid4
 from urllib.parse import urlparse
-import requests
+
 #NOTES:
 #Each block in our entire blockchain has the following:
 # 1. An index, a timestamp, a list of transactions defining it, a proof and the hash of the previous block.
@@ -33,9 +33,6 @@ class BlockChain(object):
 
         return self.last_block['index'] + 1
     
-
-    def register_nodes(self, address):
-        self.nodes.add(urlparse(address).netloc)
 
     def add_block(self, proof, previous_hash = None):
         #Creates a new Block in our blockchain:
