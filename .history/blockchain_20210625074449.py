@@ -77,13 +77,13 @@ class BlockChain(object):
                     new_chain = chain
         
 
-        if new_chain:
+        if new_chain not None:
             self.chainer = new_chain
             return True
         
 
         return False
-
+        
 
 
 

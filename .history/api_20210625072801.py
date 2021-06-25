@@ -46,6 +46,9 @@ def mine():
     return jsonify(response), 200
 
 
+
+
+
 @app.route('/transactions/new', methods = ['POST'])
 def new_transactions():
     values = request.get_json()
@@ -81,30 +84,6 @@ def full_chain():
 @app.route('/', methods=['GET'])
 def tester():
     return "<h1> Your connection is testable and works as well </h1>"
-
-
-
-@app.route('/nodes/register', methods=['POST'])
-def register_nodes():
-    values = request.get_json()
-
-    nodes = values.get('nodes')  #Getting a list of nodes (HTTP addresses) supplied.
-    if nodes is None:
-        return "Error: Please supply a valid list of nodes", 400
-
-    for node in nodes:
-        my_blockchain.register_nodes(node)
-
-    
-
-    response ={
-        'message': 'New nodes have been added',
-        'total nodes': list(my_blockchain.nodes),
-    }
-
-
-    return jsonify(response), 201
-
 
 
 

@@ -39,53 +39,7 @@ class BlockChain(object):
 
         while(next_index < len(chainer)):
             current_block = chainer[next_index]
-
-            #We now check the hashes of the previous two blocks.
-            if first_block['previous_hash'] != self.hash_function(current_block):
-                return False
-            
-            #Checking Proof of Work:
-            if not self.valid_proof(first_block['proof'], current_block['proof']):
-                return False
-            
-            first_block = current_block
-            next_index += 1
-        
-
-        return True
     
-
-    def resolve_conflicts_among_nodes(self):
-        #The primary way of resolving conflicts will be to choose the chain with the largest length in the network.
-        all_neighbours = self.nodes
-        new_chain = None
-
-
-        max_length = len(self.chainer)
-
-        for nodes in all_neighbours:
-            #Iterating through the set of neighbours.
-            response = requests.get(f'http://{nodes}/chain')
-
-            if response.status_code == 200:
-                chain_length = response.json()['length']
-                chain = response.json()['chain']
-
-
-                if chain_length > max_length and self.valid_chain(chain):
-                    max_length = chain_length
-                    new_chain = chain
-        
-
-        if new_chain:
-            self.chainer = new_chain
-            return True
-        
-
-        return False
-
-
-
 
     def register_nodes(self, address):
         self.nodes.add(urlparse(address).netloc)
@@ -125,9 +79,7 @@ class BlockChain(object):
     def hash_function(my_block):
         # Takes in a block of a blockchain and calculates the SHA-256 hash for that block:
 
-        #We need to first sort our dictionary.
-        block_string = json.dumps(my_block, sort_keys=True).encode()
-        return hashlib.sha256(block_string).hexdigest()
+        pass
 
 
     @staticmethod
