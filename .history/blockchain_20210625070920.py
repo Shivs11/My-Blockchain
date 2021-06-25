@@ -39,9 +39,6 @@ class BlockChain(object):
 
         while(next_index < len(chainer)):
             current_block = chainer[next_index]
-
-            #We now check the hashes of the previous two blocks.
-            if first_block['previous_hash'] != self.has
     
 
     def register_nodes(self, address):
@@ -82,9 +79,7 @@ class BlockChain(object):
     def hash_function(my_block):
         # Takes in a block of a blockchain and calculates the SHA-256 hash for that block:
 
-        #We need to first sort our dictionary.
-        block_string = json.dumps(my_block, sort_keys=True).encode()
-        return hashlib.sha256(block_string).hexdigest()
+        pass
 
 
     @staticmethod
